@@ -1,0 +1,64 @@
+package BarangController
+
+import (
+	"fmt"
+	"ginAPI/database"
+
+	"github.com/gin-gonic/gin"
+)
+
+func Show(c *gin.Context) {
+	con := database.ConnectSQL()
+	result, err := con.Query("Select * from barang ")
+	if err == nil {
+		defer con.Close()
+		var arr []interface{}
+		for result.Next() {
+			var id uint64
+			var nama_barang, kuantity, created_at, updated_at string
+			err = result.Scan(&id, &nama_barang, &kuantity, &created_at, &updated_at)
+			if err != nil {
+				panic(err.Error())
+			}
+			fmt.Println(id, nama_barang, kuantity, created_at, updated_at)
+			row := map[string]interface{}{
+				"id":          id,
+				"nama_barang": nama_barang,
+				"kuantity":    kuantity,
+				"created_at":  created_at,
+				"updated_at":  updated_at,
+			}
+			arr = append(arr, row)
+		}
+		c.JSON(200, gin.H{
+			"data": arr,
+		})
+	} else {
+		fmt.Println(err)
+	}
+}
+
+func Detail(c *gin.Context) {
+	id := c.Param("id")
+	c.JSON(200, gin.H{
+		"message": "Detail " + id,
+	})
+}
+
+func Create(c *gin.Context) {
+	c.JSON(200, gin.H{
+		"message": "Create",
+	})
+}
+
+func Edit(c *gin.Context) {
+	c.JSON(200, gin.H{
+		"message": "Edit",
+	})
+}
+
+func Delete(c *gin.Context) {
+	c.JSON(200, gin.H{
+		"message": "Delete",
+	})
+}
