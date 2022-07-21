@@ -1,4 +1,5 @@
 # Gin Web Framework
+<b> GIN TEMPLATE with express.js-like structure</b>
 
 <img align="right" width="159px" src="https://raw.githubusercontent.com/gin-gonic/logo/master/color.png">
 
@@ -14,4 +15,8 @@
 
 Gin is a web framework written in Go (Golang). It features a martini-like API with performance that is up to 40 times faster thanks to [httprouter](https://github.com/julienschmidt/httprouter). If you need performance and good productivity, you will love Gin.
 
-<b> Gin API MVC-like Template & Example with example go concurency & CRUD data to DB with & without go ORM </b>
+<b> Gin API MVC derivative Template </b>
+<b> Including example of : </b>
+- go concurency 
+- Native CRUD data to DB 
+- CRUD with go ORM 
