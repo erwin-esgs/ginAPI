@@ -20,3 +20,4 @@ Gin is a web framework written in Go (Golang). It features a martini-like API wi
 - go concurency 
 - Native CRUD data to DB 
 - CRUD with go ORM 
+- Migration to DB
